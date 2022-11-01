@@ -45,3 +45,9 @@ Article (CodeArticle, Category, Slug, Title, Content);
 BELONGS_TO (CodeCategory, CodeArticle);
 WRITES (CodeUser, CodeArticle);
 ```
+
+## PDM
+
+_Physical Data Model_.
+
+![Pdm](./img/pdm.png)
