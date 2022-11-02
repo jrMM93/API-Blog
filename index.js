@@ -13,7 +13,6 @@ import { router } from './app/routes/index.js'
 
 //-- Security
 import helmet from 'helmet'
-
 app.use(helmet())
 
 //-- Encoding

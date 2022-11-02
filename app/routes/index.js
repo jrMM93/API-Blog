@@ -11,4 +11,8 @@ router.get('/api/v1', (_req, res) => {
 import { router as categoryRouter } from './category.js'
 router.use('/', categoryRouter)
 
+// IMPORT POST ROUTER
+import { router as articleRouter } from './article.js'
+router.use('/', articleRouter)
+
 export { router }
