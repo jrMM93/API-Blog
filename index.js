@@ -36,6 +36,6 @@ const PORT = process.env.PORT ?? 3000
 
 app.listen(PORT, () => {
   console.log(
-    `\x1b[1;33m\u26a1Server running on : http://localhost:${PORT} \u26a1\x1b[0m`
+    `\x1b[1;33m\u26a1 Server running on : http://localhost:${PORT} \u26a1\x1b[0m`
   )
 })
