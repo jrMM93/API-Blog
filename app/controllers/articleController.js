@@ -27,4 +27,15 @@ async function fetchOneArticle(req, res) {
   }
 }
 
-export { fetchAllArticles, fetchOneArticle }
+//------------------------------------------------------------- CREATE
+async function createArticle(req, res) {
+  try {
+    console.log(req.body)
+    await Article.createArticle(req.body)
+    return res.status(200).json('Your post has been successfully created')
+  } catch (err) {
+    res.status(500).json({ 'Error 500': err.message })
+  }
+}
+
+export { fetchAllArticles, fetchOneArticle, createArticle }
