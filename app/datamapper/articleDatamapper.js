@@ -56,4 +56,13 @@ async function updateData(articleId, articleData) {
   return result.rowCount
 }
 
-export { findAll, findOne, createData, updateData }
+async function deleteData(articleId) {
+  const result = await client.query(
+    `DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`,
+    [articleId]
+  )
+
+  return result.rowCount
+}
+
+export { findAll, findOne, createData, updateData, deleteData }
