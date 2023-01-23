@@ -2,6 +2,7 @@ import {
   findAll,
   findOne,
   createData,
+  updateData,
 } from '../datamapper/articleDatamapper.js'
 
 class Article {
@@ -15,6 +16,10 @@ class Article {
 
   static async createArticle(articleData) {
     return createData(articleData)
+  }
+
+  static async updateArticle(articleId, articleData) {
+    return updateData(articleId, articleData)
   }
 }
 

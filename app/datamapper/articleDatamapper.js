@@ -32,7 +32,28 @@ async function createData(articleData) {
   }
 
   const result = await client.query(sql)
-  return result.rows[0]
+  return result.rowCount
 }
 
-export { findAll, findOne, createData }
+//------------------------------------------------------------------- UPDATE
+async function updateData(articleId, articleData) {
+  let { category, slug, title, content, category_id } = articleData
+
+  const sql = {
+    text: `
+      UPDATE "${TABLE_NAME}"
+          SET
+          "category" = $1,
+          "slug" = $2,
+          "title" = $3,
+          "content" = $4,
+          "category_id" = $5
+      WHERE "id" = $6;`,
+    values: [category, slug, title, content, category_id, articleId],
+  }
+
+  const result = await client.query(sql)
+  return result.rowCount
+}
+
+export { findAll, findOne, createData, updateData }
