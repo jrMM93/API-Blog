@@ -45,7 +45,8 @@ CREATE TABLE IF NOT EXISTS "user" (
 -- Create category table
 CREATE TABLE IF NOT EXISTS "category" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "label"  TEXT NOT NULL
+  "label"  TEXT NOT NULL,
+  "route" TEXT NOT NULL
 );
 
 -- Create article table
@@ -70,11 +71,11 @@ INSERT INTO "user" ("email", "firstname", "lastname", "password")
 VALUES  ('jeremyatn@gmail.com', 'Jeremy','Antoni', 'motdepassedeJeremy9?'),
         ('jeanpeuplu@gmail.com', 'Jean','Peuplu', 'motdepassedeJean9?');
 
-INSERT INTO "category" ("label")
-VALUES  ('Funny'),
-        ('Random'),
-        ('Science'),
-        ('Recipe');
+INSERT INTO "category" ("label", "route")
+VALUES  ('Funny', '/funny'),
+        ('Random', '/random'),
+        ('Science', '/science'),
+        ('Recipe', '/recipe');
 
 INSERT INTO "article" ("category", "slug", "title", "content", "category_id", "user_id")
 VALUES ('Funny', 'angular-une-fausse-bonne-idee', 'Angular, une fausse bonne idée ?', 'Angular, une fausse bonne idée ? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1),
