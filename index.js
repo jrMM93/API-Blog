@@ -22,7 +22,10 @@ app.use(express.urlencoded({ extended: false }))
 //--CORS
 app.use((_req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, X-Requested-With'
+  )
   res.setHeader(
     'Access-Control-Allow-Methods',
     'GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE'

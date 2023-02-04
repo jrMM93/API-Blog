@@ -30,6 +30,11 @@ async function fetchOneArticle(req, res) {
 //------------------------------------------------------------- CREATE
 async function createArticle(req, res) {
   try {
+    const titleIsTaken = await Article.findByTitle(req.body.title)
+    if (titleIsTaken) {
+      return res.json('This title already exists')
+    }
+
     console.log(req)
     await Article.createArticle(req.body)
     return res.status(200).json('Your post has been successfully created')

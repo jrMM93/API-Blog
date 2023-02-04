@@ -4,8 +4,8 @@ import bcrypt from 'bcrypt'
 //------------------------------------------------------------- CREATE
 async function createUser(req, res) {
   try {
-    const emailIsUnique = await User.findUserByEmail(req.body.email)
-    if (emailIsUnique) {
+    const emailIsTaken = await User.findUserByEmail(req.body.email)
+    if (emailIsTaken) {
       return res.json('Email already in use')
     }
 

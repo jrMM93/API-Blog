@@ -56,6 +56,7 @@ async function updateData(articleId, articleData) {
   return result.rowCount
 }
 
+//------------------------------------------------------------------- DELETE
 async function deleteData(articleId) {
   const result = await client.query(
     `DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`,
@@ -65,4 +66,27 @@ async function deleteData(articleId) {
   return result.rowCount
 }
 
-export { findAll, findOne, createData, updateData, deleteData }
+//------------------------------------------------------------------- FIND ARTICLE BY TITLE
+async function findArticleByTitle(title) {
+  const sql = {
+    text: `SELECT * FROM "${TABLE_NAME}" WHERE "title" = $1;`,
+    values: [title],
+  }
+
+  const result = await client.query(sql)
+
+  if (result.rowCount === 0) {
+    return null
+  }
+
+  return result.rows[0]
+}
+
+export {
+  findAll,
+  findOne,
+  createData,
+  updateData,
+  deleteData,
+  findArticleByTitle,
+}
