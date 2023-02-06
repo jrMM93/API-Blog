@@ -5,6 +5,7 @@ import {
   updateData,
   deleteData,
   findArticleByTitle,
+  findArticleBySlug,
 } from '../datamapper/articleDatamapper.js'
 
 class Article {
@@ -30,6 +31,10 @@ class Article {
 
   static async findByTitle(title) {
     return findArticleByTitle(title)
+  }
+
+  static async findBySlug(slug) {
+    return findArticleBySlug(slug)
   }
 }
 

@@ -82,6 +82,22 @@ async function findArticleByTitle(title) {
   return result.rows[0]
 }
 
+//------------------------------------------------------------------- FIND ARTICLE BY SLUG
+async function findArticleBySlug(slug) {
+  const sql = {
+    text: `SELECT * FROM "${TABLE_NAME}" WHERE "slug" = $1;`,
+    values: [slug],
+  }
+
+  const result = await client.query(sql)
+
+  if (result.rowCount === 0) {
+    return null
+  }
+
+  return result.rows[0]
+}
+
 export {
   findAll,
   findOne,
@@ -89,4 +105,5 @@ export {
   updateData,
   deleteData,
   findArticleByTitle,
+  findArticleBySlug,
 }

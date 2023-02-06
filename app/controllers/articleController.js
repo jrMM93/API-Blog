@@ -30,8 +30,9 @@ async function fetchOneArticle(req, res) {
 //------------------------------------------------------------- CREATE
 async function createArticle(req, res) {
   try {
+    const slugIsTaken = await Article.findBySlug(req.body.slug)
     const titleIsTaken = await Article.findByTitle(req.body.title)
-    if (titleIsTaken) {
+    if (titleIsTaken || slugIsTaken) {
       return res.json('This title already exists')
     }
 
@@ -58,8 +59,9 @@ async function updateArticle(req, res) {
       req.body[key] ? req.body[key] : (req.body[key] = articleInfo[key])
     }
 
+    const slugIsTaken = await Article.findBySlug(req.body.slug)
     const titleIsTaken = await Article.findByTitle(req.body.title)
-    if (titleIsTaken) {
+    if (titleIsTaken || slugIsTaken) {
       return res.json('This title already exists')
     }
 
