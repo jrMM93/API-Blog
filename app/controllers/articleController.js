@@ -58,6 +58,11 @@ async function updateArticle(req, res) {
       req.body[key] ? req.body[key] : (req.body[key] = articleInfo[key])
     }
 
+    const titleIsTaken = await Article.findByTitle(req.body.title)
+    if (titleIsTaken) {
+      return res.json('This title already exists')
+    }
+
     await Article.updateArticle(articleId, req.body)
 
     return res.status(200).json('Your post has been successfully edited')
