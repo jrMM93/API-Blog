@@ -1,10 +1,8 @@
 # API-Blog
 
-## Getting started
+## API Documentation
 
-```bash
-
-```
+[Documentation](./__docs/api-documentation.md)
 
 ## Conception
 
